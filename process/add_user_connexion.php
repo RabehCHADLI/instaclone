@@ -36,11 +36,8 @@ if (!empty($_POST['pseudo'])) {
         $_SESSION['pseudo'] = $_POST["pseudo"];
 
 
-<<<<<<< HEAD
-        header('Location: ../index.php?success=Le pseudo a bien été créé');
-=======
         header('Location: ../feed.php?success=Le pseudo a bien été créé');
->>>>>>> 545cbd0 (Orlane)
+
         die;
     } else {
 
@@ -53,16 +50,10 @@ if (!empty($_POST['pseudo'])) {
 
         $_SESSION['pseudo'] = $user['pseudo'];
 
-<<<<<<< HEAD
-        header('Location: ../index.php');
-    }
-} else {
-    header('Location: ../config/connexion/connexion.php?error=Problème lors de la création du pseudo');
-}
-=======
+
         header('Location: ../feed.php');
     }
 } else {
     header('Location: ../index.php?error=Problème lors de la création du pseudo');
 }
->>>>>>> 545cbd0 (Orlane)
+
