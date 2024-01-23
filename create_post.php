@@ -2,7 +2,6 @@
 session_start();
 include './partials/header.php';
 include './partials/navbar.php';
-// var_dump($_SESSION)
 ?>
 
 <div class="container border border-dark rounded-3 text-center">
