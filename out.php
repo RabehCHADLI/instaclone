@@ -3,13 +3,13 @@ session_start();
 include './partials/header.php';
 ?>
 
-<div class="index container border border-danger border-2 rounded-2 w-25 p-5">
+<div class="out container border border-dark border-2 rounded-3 w-25 p-5">
   <a href="./index.php">
-    <img src="./assets/images/logo.png" alt="logo" class="mx-auto d-block">
+    <img src="./assets/images/logo.png" alt="logo" class="mx-auto d-block mb-5">
   </a>
-  NOUS AVONS HATE DE VOUS REVOIR
+  <div class="text-center"> A BIENTOT </div>
 </div>
 
 <?php
-include './partials/footer.php';
+// include './partials/footer.php';
 ?>

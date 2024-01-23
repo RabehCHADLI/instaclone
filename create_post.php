@@ -1,41 +1,23 @@
 <?php
-include './partial/header.php';
 session_start();
-var_dump($_SESSION)
+include './partials/header.php';
+include './navbar.php';
+// var_dump($_SESSION)
 ?>
-<form action="./process/addPost.php" method="post" >
 
-<input type="text" name="content" id="content" placeholder="caption">
-<input type="file" name='image' id="image">
-<button>ici</button>
-
+<div class="container border border-dark rounded-3 text-center">
+<form action="./process/addPost.php" method="post" enctype="multipart/form-data" >
+    <div class="mb-3 mt-3 mx-auto d-block">
+    <label for="file" class="form-label"></label>
+    <input type="file" name='image' id="image">
+    <label for="caption" class="form-label"></label>
+    <input type="text" class="form-control rounded-pill mt-3 w-25 mx-auto d-block" name="content" id="content" placeholder="caption">
+    </div>
+    <button class= "btn btn-outline-dark mx-auto d-block mt-5 mb-3">Publier</button>
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
 
 
 <?php
-
-include './partial/footer.php';
-
-
+include './partials/footer.php';
 ?>
