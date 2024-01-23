@@ -1,7 +1,7 @@
 <?php
 session_start();
 include './partials/header.php';
-include './navbar.php';
+include './partials/navbar.php';
 // var_dump($_SESSION)
 ?>
 

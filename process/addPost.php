@@ -12,12 +12,28 @@ $prepareRequest->execute([
 
 $user = $prepareRequest->fetch(PDO::FETCH_ASSOC);
 
-$prepareRequest = $connexion->prepare('INSERT INTO post(user_id, content, photoPost,`like`,create_at) VALUES (?,?,?,?,?)');
+$prepareRequest = $connexion->prepare(
+    'INSERT INTO post(user_id, content, photoPost,create_at) VALUES (?,?,?,?)'
+);
 $prepareRequest->execute([
     $user['id'],
     $_POST['content'],
     $name ?? null,
-    0,
     date("Y-m-d H:i:s")
 ]);
+
+$post_id = $connexion->lastInsertId();
+
+$prepareRequest = $connexion->prepare(
+    'INSERT INTO `likes`( `user_id`, `post_id`, `created_at`, `nb_likes`) VALUES (?, ?, ?, ?)'
+);
+
+$prepareRequest->execute([
+    $user['id'],
+    $post_id,
+    date("Y-m-d H:i:s"),
+    0
+]);
+
+header('Location: ../feed.php?success=Votre post a été ajouté')
 ?>

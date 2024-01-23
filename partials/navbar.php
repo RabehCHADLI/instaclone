@@ -3,12 +3,12 @@
     <a class="navbar-brand" href="./feed.php">
       <img src="./assets/images/logo.png">
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon">     
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">
       </span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav d-flex justify-content-center">
         <li class="nav-item">
           <a class="nav-link" href="./profil.php">PROFIL</a>
         </li>
@@ -29,5 +29,3 @@
     </div>
   </div>
 </nav>
-
-<script src="../assets/js/script.js"></script>

@@ -2,7 +2,7 @@
 session_start();
 // include './config/connexion/debug.php';
 include './partials/header.php';
-include './navbar.php';
+include './partials/navbar.php';
 
 // Connexion BDD
 require_once '../htdocs/config/connexion/connexion.php';
@@ -25,9 +25,9 @@ $profil = $preparedRequestProfil->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <div class="container border border-dark rounded-3">
-    PHOTO DE PROFIL <br>
+    AJOUTER PHOTO DE PROFIL ?? <br>
     Bonjour <?= $_SESSION['pseudo']; ?> <br>
-    VOS PHOTOS 
+    AFFICHER VOS POST
 </div>
 
 <?php
