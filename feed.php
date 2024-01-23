@@ -17,7 +17,7 @@ $prepareRequest->execute();
 $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-<div class="container border border-dark rounded-3">
+<div class="container entete border border-dark rounded-3">
     Bonjour <?= $_SESSION['pseudo']; ?> <br>
     <p class="text-center">VOTRE FIL D'ACTUALITÉ</p>
 </div>
@@ -32,22 +32,22 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
                 <h4 class="fw-bold"><?= $value['pseudo'] ?></h4>
 
                 <!-- IMAGE DU POST -->
-                 <img src="./imageUpload/<?= $value['photoPost'] ?>" class="w-100" alt=""> 
-                <p> <?= $value['create_at'] ?> </p>
+                <form action="./post.php" method="post">
+                    <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
+                    <button class="btn" type="submit"> <img src="./imageUpload/<?= $value['photoPost'] ?>" class="w-100" alt=""> </button>
+                    <p> <?= $value['create_at'] ?> </p>
+                </form>
 
                 <!-- FORMULAIRE LIKE -->
                 <form action="./post.php" method="post">
                     <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
                     <button type="submit" class="btn"> <i class="fa-regular fa-heart" style="color: #000000;"> NOMBRE DE LIKE DU POST</i> </button>
                 </form>
-                
 
-                <!-- FORMULAIRE COMMENTAIRE -->
-                <form action="./post.php" method="post">
-                    <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
-                    <button type="submit" class="btn"> <i class="fa-regular fa-comment" style="color: #000000;"> NOMBRE DE COMMENTAIRES DU POST </i></button>
-                </form>
-         
+                <!-- FORMULAIRE VOIR LE POST-->
+                <i class="fa-regular fa-comment" style="color: #000000;"> NOMBRE DE COMMENTAIRES DU POST </i>
+
+
             </div>
             <div class="col">
                 <p class="text-danger"> <?= $value['content'] ?> </p>
