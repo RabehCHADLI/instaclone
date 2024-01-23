@@ -11,5 +11,5 @@
     <!-- <script src="https://kit.fontawesome.com/23471b5a81.js" crossorigin="anonymous"></script> -->
 </head>
 
-<body style="background-image: url(../assets/images/bg2.jpg);">
+<body>
 

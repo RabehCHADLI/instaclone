@@ -12,14 +12,14 @@ body::before {
     content: "";
     position: fixed; /* pour éviter le défilement avec la page */
     top: 0;
-    left: -100px; /* faire en sorte que l'image soit centrée */
+    left: 0px; /* faire en sorte que l'image soit centrée */
     width: 100%;
     height: 100%;
     background-image: url('../images/bg2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -1; /* Placez le pseudo-élément derrière le contenu du body */
-}
+     z-index: -1; /* Placez le pseudo-élément derrière le contenu du body */
+} 
 
 .index {
     position: absolute;
@@ -52,5 +52,23 @@ body::before {
         left: -50%;
         top: -50%; 
         margin-top: 0px;
+    }
+
+    .entete {
+        display: none;
+    }
+
+    button.btn {
+        width: 100%;
+            max-width: 100%; /* Assurez-vous que l'image ne dépasse pas la largeur de l'écran */
+            height: auto; /* Permet à la hauteur de l'image de s'ajuster proportionnellement */
+        }
+
+    .container {
+        flex-direction: column; /* Changement pour une colonne sur petit écran */
+    }
+
+    .navbar {
+        margin-top: 0; /* Supprime la marge pour les petits écrans */
     }
 }
