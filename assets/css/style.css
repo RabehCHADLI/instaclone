@@ -51,5 +51,6 @@ body::before {
         height: 200%; 
         left: -50%;
         top: -50%; 
+        margin-top: 0px;
     }
 }
