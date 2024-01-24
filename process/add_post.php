@@ -22,18 +22,6 @@ $prepareRequest->execute([
     date("Y-m-d H:i:s")
 ]);
 
-$post_id = $connexion->lastInsertId();
-
-$prepareRequest = $connexion->prepare(
-    'INSERT INTO `likes`( `user_id`, `post_id`, `created_at`, `nb_likes`) VALUES (?, ?, ?, ?)'
-);
-
-$prepareRequest->execute([
-    $user['id'],
-    $post_id,
-    date("Y-m-d H:i:s"),
-    0
-]);
 
 header('Location: ../feed.php?success=Votre post a été ajouté')
 ?>

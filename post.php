@@ -5,7 +5,7 @@ require_once './config/connexion/connexion.php';
 
 // AFFICHER LE POST + SES LIKES
 $prepareRequest = $connexion->prepare(
-    'SELECT * FROM `post` INNER JOIN likes ON post.id = likes.post_id WHERE post.id = ?'
+    'SELECT * FROM post WHERE post.id = ?'
 );
 $prepareRequest->execute([
     $_POST['post_id']
@@ -27,7 +27,7 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
         <div class="col">
 
             <!-- AUTEUR DU POST -->
-            <h4 class="fw-bold"> PSEUDO </h4>
+            <h4 class="fw-bold"> <?= $_POST['pseudo'] ?> </h4>
 
             <!-- IMAGE DU POST -->
             <img src="./imageUpload/<?= $post['photoPost'] ?>" class="w-100" alt="">
@@ -43,22 +43,27 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
         </div>
 
         <div class="col">
-            <!-- AFFICHER LES COMMENTAIRES -->
-            <?php
-            foreach ($comment as $comment) { ?>
-                <p> <?= $comment['pseudo'] ?>,
-                 <?= $comment['created_at'] ?>:
-                <?= $comment['content'] ?> </p>
-            <?php } ?>
 
-            <!-- FORMULAIRE COMMENTAIRE -->
-            <form action="./process/add_comment.php" method="post">
-                <input type="hidden" name="id" value="<?= $post['post_id'] ?>">
-                <input class="w-100" type="text" name="content" id="content">
-                <button type="submit" class="btn btn-outline-dark"> COMMENTER </button>
-            </form>
+            <!-- AFFICHER LES COMMENTAIRES -->
+            <div id="scroll" class="border rounded-3 border-dark border-2 p-1 row">
+                <?php
+                foreach ($comment as $comment) { ?>
+                    <p> <?= $comment['pseudo'] ?>,
+                        <?= $comment['created_at'] ?>:
+                        <?= $comment['content'] ?> </p>
+                <?php } ?>
+            </div>
+            
+                <!-- FORMULAIRE COMMENTAIRE -->
+                <form action="./process/add_comment.php" method="post">
+                    <input type="hidden" name="id" value="<?= $post['id'] ?>">
+                    <input class="w-100 rounded-3" type="text" name="content" id="content" placeholder="Votre commentaire">
+                    <button type="submit" class="btn btn-outline-dark mt-2"> COMMENTER </button>
+                </form>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 </div>

@@ -16,6 +16,8 @@ $prepareRequest = $connexion->prepare('SELECT * FROM `comments` ORDER BY `commen
 $prepareRequest->execute();
 $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
+
+
 ?>
 <div class="container entete border border-dark rounded-3">
     Bonjour <?= $_SESSION['pseudo']; ?> <br>
@@ -24,44 +26,73 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="container border border-dark rounded-3">
     <?php
-    foreach ($post as $value) { ?>
+    foreach ($post as $value) {
+
+        //AFFICHER LE NOMBRE DE LIKES
+        $prepareRequest = $connexion->prepare('SELECT COUNT(*) FROM likes WHERE likes.post_id = ?');
+        $prepareRequest->execute([
+            $value['id']      
+        ]);
+        $like = $prepareRequest->fetch(); 
+
+        //AFFICHER LE NOMBRE DE COMMENTAIRES
+        $prepareRequest = $connexion->prepare('SELECT COUNT(*) FROM comments WHERE comments.post_id = ?');
+        $prepareRequest->execute([
+            $value['id']      
+        ]);
+        $nbcomment = $prepareRequest->fetch(); ?>
+        
+
         <div class="container row">
             <div class="col">
+
+            </div>
+            <div class="col-9">
 
                 <!-- AUTEUR DU POST -->
                 <h4 class="fw-bold"><?= $value['pseudo'] ?></h4>
 
+                <!-- FORMULAIRE VOIR LE POST-->
                 <!-- IMAGE DU POST -->
                 <form action="./post.php" method="post">
                     <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
-                    <button class="btn" type="submit"> <img src="./imageUpload/<?= $value['photoPost'] ?>" class="w-100" alt=""> </button>
+                    <input type="hidden" name="pseudo" value="<?= $value['pseudo'] ?>">
+                    <button class="btn " type="submit"> <img src="./imageUpload/<?= $value['photoPost'] ?>" class="box w-100" alt=""> </button>
                     <p> <?= $value['create_at'] ?> </p>
                 </form>
 
+                <!-- AFFICHER LA CAPTION -->
+                <p class="text-danger"> <?= $value['content'] ?> </p>
+            
+
                 <!-- FORMULAIRE LIKE -->
-                <form action="./post.php" method="post">
+                <form action="./process/add_like.php" method="post">
                     <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
-                    <button type="submit" class="btn"> <i class="fa-regular fa-heart" style="color: #000000;"> NOMBRE DE LIKE DU POST</i> </button>
+                    <button type="submit" class="btn"> <?= $like['0'] ?> <i class="fa-regular fa-heart" style="color: #000000;"> </i> </button>
                 </form>
 
-                <!-- FORMULAIRE VOIR LE POST-->
-                <i class="fa-regular fa-comment" style="color: #000000;"> NOMBRE DE COMMENTAIRES DU POST </i>
+                <!-- FORMULAIRE COMMENTAIRE -->
+                <i class="fa-regular fa-comment" style="color: #000000;"> <?= $nbcomment ['0'] ?> </i>
+</div>
 
-
-            </div>
             <div class="col">
-                <p class="text-danger"> <?= $value['content'] ?> </p>
-                <form action="./process/add_comment.php" method="post">
+
+                <!-- AFFICHER LES COMMENTAIRES
+                <div id="scroll" class="border rounded-3 border-dark border-2 p-1 row">
+                <?php  ?>
+                </div>
+                 FORMULAIRE COMMENTAIRE -->
+                <!-- <form action="./process/add_comment.php" method="post">
                     <input class="w-100" type="text" name="content" id="content">
                     <input type="hidden" name="id" value="<?= $value['id'] ?>">
                     <button type="submit" class="btn btn-outline-dark"> Commenter </button>
-                </form>
+                </form> -->
+                <!-- </div> -->
             </div>
+        <?php  } ?>
         </div>
-    <?php  } ?>
-</div>
 
 
-<?php
-include './partials/footer.php';
-?>
+        <?php
+        include './partials/footer.php';
+        ?>

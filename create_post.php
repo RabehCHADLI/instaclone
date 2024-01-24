@@ -5,7 +5,7 @@ include './partials/navbar.php';
 ?>
 
 <div class="container border border-dark rounded-3 text-center">
-<form action="./process/addPost.php" method="post" enctype="multipart/form-data" >
+<form action="./process/add_post.php" method="post" enctype="multipart/form-data" >
     <div class="mb-3 mt-3 mx-auto d-block">
     <label for="file" class="form-label"></label>
     <input type="file" name='image' id="image">
