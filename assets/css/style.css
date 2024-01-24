@@ -15,22 +15,29 @@ body::before {
     left: 0px; /* faire en sorte que l'image soit centrée */
     width: 100%;
     height: 100%;
-    background-image: url('../images/bg2.jpg');
+    background-image: url('../images/bg4.jpg');
     background-repeat: no-repeat;
     background-size: cover;
      z-index: -1; /* Placez le pseudo-élément derrière le contenu du body */
 } 
 
+.logo {
+    
+} 
+
+
 .index {
     position: absolute;
     left: 700px;
     top: 200px;
+    box-shadow: 10px 5px 5px;
 }
 
 .out {
     position: absolute;
     left: 700px;
     top: 300px;
+    box-shadow: 10px 5px 5px;
 }
 
 #scroll {
@@ -57,24 +64,35 @@ body::before {
     max-height: 100%;
   }
 
+.navbar {
+    background-color: #B5B2B3;
+}
+
+.profil {
+    background-color: #C3C3C3;
+}
+
+.feed {
+    background-color: #C3C3C3;
+}
+
+
 /* Tablette */
 @media screen and (max-device-width: 1250px) {
     
 }
 
 
-
 /* Telephone */
 @media screen and (max-device-width: 760px) {
     body::before {
-        background-image: url('../images/bg.jpg'); /* Nouvelle image de fond pour les écrans de téléphone */
+        background-image: url('../images/bg4.jpg'); /* Nouvelle image de fond pour les écrans de téléphone */
         transform-origin: center;
         transform: scale(0.5); 
         width: 200%; 
         height: 200%; 
         left: -50%;
         top: -50%; 
-        margin-top: 0px;
     }
 
     .entete {

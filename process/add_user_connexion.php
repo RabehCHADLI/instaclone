@@ -22,18 +22,20 @@ if (!empty($_POST['pseudo'])) {
         // Créer un user
         // Préparer la requête d'insertion dans la table user
         $preparedRequestCreateUser = $connexion->prepare(
-            "INSERT INTO User (pseudo) VALUES(?)"
+            "INSERT INTO User (pseudo, photo_profil) VALUES(?,?)"
         );
 
 
         // Exécute la requete pour insérer le pseudo
         $preparedRequestCreateUser->execute([
             $_POST['pseudo'],
+            NULL
         ]);
 
         // Connecte l'utilisateur
         $_SESSION['id'] = $connexion->lastInsertId();
         $_SESSION['pseudo'] = $_POST["pseudo"];
+        $_SESSION['photo_profil'] = NULL;
 
 
         header('Location: ../feed.php?success=Le pseudo a bien été créé');
@@ -44,6 +46,7 @@ if (!empty($_POST['pseudo'])) {
         //Connecte l'utilisateur
         $_SESSION['id'] = $user['id'];
         $_SESSION['pseudo'] = $user["pseudo"];
+        $_SESSION['photo_profil'] = NULL;
     }
 
     if (!empty($user['pseudo'])) {

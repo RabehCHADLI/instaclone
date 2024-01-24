@@ -1,5 +1,5 @@
 <!-- <footer>
-    <div class="container text-center border border-dark rounded-3 text-dark p-4">
+    <div class="container text-center border border-secondary rounded-3 text-dark p-4">
         © 2024 Copyright: Rabeh Chadli, Romain, Orlane Esthésie
     </div>
 </footer> -->
