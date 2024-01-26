@@ -49,7 +49,9 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
             <p> <?= $post['create_at'] ?> </p>
 
             <!-- FORMULAIRE LIKE -->
+
             <form action="./post.php" method="post" id="formlike">
+
                 <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
                 <button type="submit" class="btn" onclick="changeColor(this)"> <i class="fa-regular fa-heart" style="color: #000000;"></i></button><span id="spanlikes"></span>
             </form>
