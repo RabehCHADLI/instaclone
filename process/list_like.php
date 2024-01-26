@@ -7,3 +7,4 @@ $prepareRequest->execute([
 ]);
 $like = $prepareRequest->fetch();
 echo json_encode($like);
+
