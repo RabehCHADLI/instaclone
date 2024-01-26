@@ -16,6 +16,7 @@ if(!empty($userLike)){
         $_POST['post_id']
     ]);
 
+    header('Location: ../feed.php');
 }else{
     $prepareRequest = $connexion->prepare('INSERT INTO likes(user_id, post_id, created_at) VALUES (?, ? , ?)');
     $prepareRequest->execute([
@@ -23,4 +24,5 @@ if(!empty($userLike)){
         $_POST['post_id'],
         date("Y-m-d H:i:s")
     ]);
+    header('Location: ../feed.php');
 }

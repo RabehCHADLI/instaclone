@@ -25,7 +25,7 @@ $preparedRequestPost->execute([
       <span class="navbar-toggler-icon">
       </span>
     </button>
-    <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarNav">
+    <div class="collapse navbar-collapse " id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="./profil.php">PROFIL</a>
@@ -36,8 +36,8 @@ $preparedRequestPost->execute([
         <li class="nav-item mr-3">
           <a class="nav-link" href="./feed.php">FEED</a>
         </li>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" role="search" method="post" action="../recherche.php">
+          <input class="form-control me-2" name="recherche" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-dark" type="submit">Search</button>
         </form>
         <li class="nav-item">

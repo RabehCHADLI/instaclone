@@ -59,35 +59,17 @@ $post = $preparedRequestPost->fetchAll(PDO::FETCH_ASSOC);
             $like = $prepareRequest->fetch();
 
         ?>
-            <div class="container border border-danger ">
+            <div class="container ">
 
             <!-- FORMULAIRE POUR ALLER VOIR LE POST EN CLIQUANT SUR LA PHOTO -->
             <form action="./post.php" method="post">
                     <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
                     <input type="hidden" name="pseudo" value="<?= $_SESSION['pseudo'] ?>">
                     <button class="btn" type="submit">
-                        <img src="./imageUpload/<?= $value['photoPost'] ?>" class="w-100" alt="">
+                        <img src="./imageUpload/<?= $value['photoPost'] ?>" class="custom-image" alt="">
                     </button>
-
-            <!-- AFFICHER LA DATE DE CREATION -->
-                <p><?= $value['create_at'] ?></p>
-
-            <!-- FROMULAIRE POUR AJOUTER UN ECHO UN LIKE -->
-                <form action="./process/add_like.php" method="post">
-                    <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
-                    <button type="submit" class="btn"> <i class="fa-regular fa-heart" style="color: #000000;"> <?= $like['0'] ?> </i> </button>
-                </form>
-
-            <!-- FORMULAIRE POUR AJOUTER ET ECHO LES COMMENTAIRES -->
-                <form action="./post.php" method="post">
-                    <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
-                    <input type="hidden" name="pseudo" value="<?= $_SESSION['pseudo'] ?>">
-                    <button type="submit" class="btn"> <i class="fa-regular fa-comment" style="color: #000000;"> <?= $nbcomment['0'] ?> </i> </button>
-                </form>
-            
-            <!-- AFFICHER LA CAPTION -->
-                <p><?= $value['content'] ?></p>
-                
+            </form>        
+        
             </div>
             <?php } ?>
     </div>
