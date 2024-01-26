@@ -51,6 +51,7 @@ $post = $preparedRequestPost->fetchAll(PDO::FETCH_ASSOC);
                 $value['id']
             ]);
             $nbcomment = $prepareRequest->fetch();
+            
             $prepareRequest = $connexion->prepare('SELECT COUNT(*) FROM likes WHERE likes.post_id = ?');
             $prepareRequest->execute([
                 $value['id']

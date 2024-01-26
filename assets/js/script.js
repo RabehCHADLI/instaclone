@@ -18,7 +18,7 @@ form.addEventListener('submit', function (e) {
         method: "POST", 
         body: formData
     }).then((response)=>{
-        return response.text()
+        return response.json()
     }).then((data)=>{
         document.querySelector('#content_com').value ='' 
 

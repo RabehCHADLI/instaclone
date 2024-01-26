@@ -4,8 +4,9 @@ include './partials/header.php';
 // include './navbar.php';
 ?>
 
-<div class="index container border border-secondary border-1 rounded-3 w-25 p-5">
-  <a href="./assets/images/logo.png">
+
+<div class="index container border border-secondary border-1 rounded-3 p-5">
+  <a href="./index.php">
     <img src="./assets/images/logo_blanc.png" alt="logo" class="logo mx-auto d-block">
   </a>
   <form action="./process/add_user_connexion.php" method="post">
