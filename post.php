@@ -50,7 +50,7 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
             <!-- FORMULAIRE LIKE -->
             
-            <form action="./post.php" method="post" id="formlike">
+            <form action="./post.php" method="post" class="formlike">
                 <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
                 <button type="submit" class="btn"> <i class="fa-regular fa-heart" style="color: #000000;"></i></button><span id="spanlikes"></span>
             </form>

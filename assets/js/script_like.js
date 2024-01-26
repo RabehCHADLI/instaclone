@@ -1,5 +1,7 @@
 var form = document.querySelector('#formlike');
 
+
+
 form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const post_id = document.querySelector('#post_id').value
@@ -30,8 +32,10 @@ async function getLike(){
     let spanlike = document.querySelector('#spanlikes');
 
     spanlike.innerHTML =data.nbLike;
+    
 
-}
+
+}   
 
 setInterval(() => {
     getLike()
