@@ -12,16 +12,23 @@ $prepareRequest->execute([
 
 $user = $prepareRequest->fetch(PDO::FETCH_ASSOC);
 
-$prepareRequest = $connexion->prepare(
-    'INSERT INTO post(user_id, content, photoPost, create_at) VALUES (?,?,?,?)'
-);
-$prepareRequest->execute([
-    $user['id'],
-    $_POST['content'],
-    $name ?? null,
-    date("Y-m-d H:i:s")
-]);
+if(!empty ($name)){
 
-
-header('Location: ../feed.php?success=Votre post a été ajouté')
+    
+    $prepareRequest = $connexion->prepare(
+        'INSERT INTO post(user_id, content, photoPost, create_at) VALUES (?,?,?,?)'
+    );
+    $prepareRequest->execute([
+        $user['id'],
+        $_POST['content'],
+        $name ?? null,
+        date("Y-m-d H:i:s")
+    ]);
+    
+    
+    header('Location: ../feed.php?success=Votre post a été ajouté');
+}
+else {
+    header('Location: ../feed.php?success=Votre post n\'a pas été ajouté');
+}
 ?>

@@ -23,16 +23,18 @@ body::before {
 
 .index {
     position: absolute;
-    left: 700px;
-    top: 200px;
+    left: 37%;
+    top: 32%;
     box-shadow: 10px 5px 5px;
+    width: 25%;
 }
 
 .out {
     position: absolute;
-    left: 700px;
-    top: 300px;
+    left: 37%;
+    top: 32%;
     box-shadow: 10px 5px 5px;
+    width: 25%;
 }
 
 #scroll {
@@ -46,7 +48,6 @@ body::before {
     align-content: center;
 
 }
-
 
 .image-grid {
     display: grid;
@@ -73,6 +74,7 @@ body::before {
     background-color: #B5B2B3;
     display: flex;
     justify-content:space-between;
+    font-size: 20px;
 }
 
 
@@ -82,13 +84,17 @@ body::before {
 
 .feed {
     background-color: #C3C3C3;
+   
+}
+
+.feed_card{
+    display: flex;
+    justify-content: center;
 }
 
 .caption{
     font-size: 40px;
 }
-
-
 
 /* Tablette */
 @media screen and (max-device-width: 1250px) {
@@ -105,6 +111,26 @@ body::before {
         height: 200%; 
         left: -50%;
         top: -50%; 
+    }
+
+    .index {
+        position: absolute;
+        left: 23%;
+        top: 32%;
+        box-shadow: 10px 5px 5px;
+        width: 60%;
+    }
+
+    .out {
+        position: absolute;
+        left: 23%;
+        top: 32%;
+        box-shadow: 10px 5px 5px;
+        width: 60%;
+    }
+
+    .profile_picture_navbar {
+        display: none;
     }
 
     .entete {
@@ -124,4 +150,5 @@ body::before {
     .navbar {
         margin-top: 0; /* Supprime la marge pour les petits écrans */
     }
+
 }

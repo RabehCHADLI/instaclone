@@ -44,7 +44,7 @@ $preparedRequestPost->execute([
           <a class="nav-link " href="./process/logout.php">EXIT</a>
         </li>
       </ul>
-      <a href="../profil.php"> <img src="./imageUpload/<?= $profil['photo_profil'] ?>" class="border rounded-circle" style="clip-path:ellipse(50% 30%); height:200px;" alt=""></a>
+      <a href="../profil.php"> <img src="./imageUpload/<?= $profil['photo_profil'] ?>" class="profile_picture_navbar border rounded-circle" style="clip-path:ellipse(50% 30%); height:200px;" alt=""></a>
     </div>
   </div>
 </nav>
@@ -53,6 +53,7 @@ $preparedRequestPost->execute([
   <div class="modal_content">
     <form action="./process/add_post.php" method="post" enctype="multipart/form-data">
       <div class="upload">
+      <i class="fa-solid fa-file-circle-plus fa-2xl" style="color: #000000;"></i>
         <h2 class="browse">SELECT A PICTURE</h2>
         <input type="file" id="image" class="input-file" name='image'>
         <label for="caption" class="form-label"></label>
@@ -104,7 +105,7 @@ $preparedRequestPost->execute([
     position: absolute;
     top: 50px;
     right: 50px;
-    color: rgb(214, 119, 30);
+    color: black;
     text-decoration: none;
   }
 </style>

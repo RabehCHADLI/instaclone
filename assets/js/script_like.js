@@ -32,3 +32,7 @@ async function getLike(){
     spanlike.innerHTML =data.nbLike;
 
 }
+
+setInterval(() => {
+    getLike()
+}, 1000);

@@ -62,10 +62,9 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
             <!-- AFFICHER LES COMMENTAIRES -->
             <div id="scroll" class="border rounded-3 border-dark border-2 p-1 row">
                 <div id="listComment">
-
                 </div>
-                
             </div>
+            <div class="" id="message_send_comment"></div>
             
                 <!-- FORMULAIRE COMMENTAIRE -->
                 <form action="./process/add_comment.php" method="post" id="form_comment">
