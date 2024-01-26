@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once '../config/connexion/connexion.php';
-
 $prepareRequest = $connexion->prepare('SELECT * FROM likes WHERE likes.user_id = ? AND likes.post_id = ?');
 $prepareRequest->execute([
     $_SESSION['id'],
@@ -17,16 +16,11 @@ if(!empty($userLike)){
         $_POST['post_id']
     ]);
 
-
-    header('Location: ../feed.php');
 }else{
-
-
     $prepareRequest = $connexion->prepare('INSERT INTO likes(user_id, post_id, created_at) VALUES (?, ? , ?)');
     $prepareRequest->execute([
         $_SESSION['id'],
         $_POST['post_id'],
         date("Y-m-d H:i:s")
     ]);
-    header('Location: ../feed.php');
 }

@@ -30,7 +30,15 @@ $post_other = $prepareRequest->fetchAll(PDO::FETCH_ASSOC); ?>
     $like = $prepareRequest->fetch();
 
     ?>
-    <img src="./imageUpload/<?= $post_other['photoPost'] ?>" class="w-100" alt="">
+    <!-- FORMULAIRE POUR ALLER VOIR LE POST EN CLIQUANT SUR LA PHOTO -->
+    <form action="./post.php" method="post">
+                    <input type="hidden" name="post_id" value="<?= $post_other['id'] ?>">
+                    <input type="hidden" name="pseudo" value="<?= $_SESSION['pseudo'] ?>">
+                    <button class="btn" type="submit">
+                    <img src="./imageUpload/<?= $post_other['photoPost'] ?>" class="w-100" alt="">
+                    </button>
+    </form>                
+    
     <p><?= $post_other['create_at'] ?></p>
     <p><?= $post_other['content'] ?></p>
     <form action="./process/add_like.php" method="post">
@@ -44,8 +52,7 @@ $post_other = $prepareRequest->fetchAll(PDO::FETCH_ASSOC); ?>
                 <button type="submit" class="btn"> <i class="fa-regular fa-comment" style="color: #000000;"> <?= $nbcomment ['0'] ?> </i> </button>
     </form>
 <?php } ?>
-}
-?>
+
 
 <?php
 include './partials/footer.php';

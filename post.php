@@ -1,4 +1,5 @@
 <?php
+session_start();
 include './partials/header.php';
 include './partials/navbar.php';
 require_once './config/connexion/connexion.php';
@@ -44,14 +45,14 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
             <h4 class="fw-bold"> <?= $_POST['pseudo'] ?> </h4>
 
             <!-- IMAGE DU POST -->
-            <img src="./imageUpload/<?= $post['photoPost'] ?>" class="w-100" alt="">
+            <img src="./imageUpload/<?=$post['photoPost'] ?>" class="w-100" alt="">
             <p> <?= $post['create_at'] ?> </p>
 
             <!-- FORMULAIRE LIKE -->
-            <i class="fa-regular fa-heart" style="color: #000000;"> <?= $like['0'] ?> </i>
-            <form action="./post.php" method="post">
+            
+            <form action="./post.php" method="post" id="formlike">
                 <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
-                <button type="submit" class="btn"> </button>
+                <button type="submit" class="btn"> <i class="fa-regular fa-heart" style="color: #000000;"></i></button><span id="spanlikes"></span>
             </form>
             <i class="fa-regular fa-comment" style="color: #000000;"> <?= $nbcomment['0'] ?></i>
         </div>
@@ -60,18 +61,16 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
             <!-- AFFICHER LES COMMENTAIRES -->
             <div id="scroll" class="border rounded-3 border-dark border-2 p-1 row">
-                <?php
-                foreach ($comment as $comment) { ?>
-                    <p> <?= $comment['pseudo'] ?>,
-                        <?= $comment['created_at'] ?>:
-                        <?= $comment['content'] ?> </p>
-                <?php } ?>
+                <div id="listComment">
+
+                </div>
+                
             </div>
             
                 <!-- FORMULAIRE COMMENTAIRE -->
-                <form action="./process/add_comment.php" method="post">
-                    <input type="hidden" name="id" value="<?= $post['id'] ?>">
-                    <input class="w-100 rounded-3" type="text" name="content" id="content" placeholder="Votre commentaire">
+                <form action="./process/add_comment.php" method="post" id="form_comment">
+                    <input type="hidden" name="post_id" id="post_id" value="<?= $post['id'] ?>">
+                    <input class="w-100 rounded-3" type="text" name="content" id="content_com" placeholder="Votre commentaire">
                     <button type="submit" class="btn btn-outline-dark mt-2"> COMMENTER </button>
                 </form>
         </div>
@@ -82,6 +81,8 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
 </div>
 
+<script src="./assets/js/script_like.js"></script>
+<script src="./assets/js/script.js"></script>
 <?php
 include './partials/footer.php';
 ?>
