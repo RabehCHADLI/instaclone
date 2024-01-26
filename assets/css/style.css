@@ -21,11 +21,6 @@ body::before {
      z-index: -1; /* Placez le pseudo-élément derrière le contenu du body */
 } 
 
-.logo {
-    
-} 
-
-
 .index {
     position: absolute;
     left: 700px;
@@ -52,21 +47,34 @@ body::before {
 
 }
 
-.box {
-    width: 100%;
-    height:100%;
-    border: 1px solid black;
-  }
 
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    
+}
 
-.box img {
-    max-width: 100%;
-    max-height: 100%;
-  }
+.image-grid img {
+    width: 100%; /* La largeur sera de 100% de la largeur de la cellule */
+    height: 90%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.image_post_feed img{
+    width: 100%; /* La largeur sera de 100% de la largeur de la cellule */
+    height: 90%;
+    border-radius: 5px;
+    object-fit: cover;
+}
 
 .navbar {
     background-color: #B5B2B3;
+    display: flex;
+    justify-content:space-between;
 }
+
 
 .profil {
     background-color: #C3C3C3;
@@ -76,12 +84,16 @@ body::before {
     background-color: #C3C3C3;
 }
 
+.caption{
+    font-size: 40px;
+}
+
+
 
 /* Tablette */
 @media screen and (max-device-width: 1250px) {
     
 }
-
 
 /* Telephone */
 @media screen and (max-device-width: 760px) {

@@ -41,45 +41,54 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="container row">
 
-            <!-- AUTEUR DU POST -->
+            <!-- AUTEUR DU POST + PHOTO DE PROFIL -->
             <form action="./profil_other.php" method="post">
-            <button class="btn" type="submit"> 
-                <img src="./imageUpload/<?=$value['photo_profil'] ?>" class="border rounded-circle"> </button>
+                <button class="btn" type="submit">
+                    <img src="./imageUpload/<?= $value['photo_profil'] ?>" class="border rounded-circle m-3" style="clip-path:ellipse(50% 30%); clip-path:ellipse(50% 50%); height:100px;"> </button>
                 <span class="fw-bold fs-4 text-uppercase"><?= $value['pseudo'] ?></span>
                 <input type="hidden" name="user_id" value="<?= $value['user_id'] ?>">
                 <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
                 <input type="hidden" name="pseudo" value="<?= $value['pseudo'] ?>">
             </form>
 
-            <div class="d-flex justify-content-center">
+            <div class="image-grid d-flex justify-content-center">
+
                 <!-- FORMULAIRE VOIR LE POST-->
                 <!-- IMAGE DU POST -->
                 <form action="./post.php" method="post">
                     <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
                     <input type="hidden" name="pseudo" value="<?= $value['pseudo'] ?>">
-                    <button class="btn " type="submit">
-                        <img src="./imageUpload/<?= $value['photoPost'] ?>" class="box w-100" alt="">
+                    <button class="btn" type="submit">
+                        <img src="./imageUpload/<?= $value['photoPost'] ?>" class="w-100 image_post_feed" alt="">
                     </button>
                     <p> <?= $value['create_at'] ?> </p>
                 </form>
-                <!-- FORMULAIRE LIKE -->
-                <form action="./process/add_like.php" method="post">
-                    <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
-                    <button type="submit" class="btn"> <i class="fa-regular fa-heart" style="color: #000000;"> <?= $like['0'] ?> </i> </button>
-                </form>
-                <!-- FORMULAIRE COMMENTAIRE -->
-                <form action="./post.php" method="post">
-                    <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
-                    <input type="hidden" name="pseudo" value="<?= $value['pseudo'] ?>">
-                    <button type="submit" class="btn"> <i class="fa-regular fa-comment" style="color: #000000;"> <?= $nbcomment['0'] ?> </i> </button>
-                </form>
+
+                <!-- METTRE LES LIKE / COMMENTAIRES EN DESSOUS DE LA PHOTO, A COTÉ DE LA DATE -->
+
+                <div class="row">
+                    <!-- FORMULAIRE LIKE -->
+                    <form action="./process/add_like.php" method="post">
+                        <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
+                        <button type="submit" class="btn"> <i class="fa-regular fa-heart" style="color: #000000;"> <?= $like['0'] ?> </i> </button>
+                    </form>
+                </div>
+                <div class="row">
+                    <!-- FORMULAIRE COMMENTAIRE -->
+                    <form action="./post.php" method="post">
+                        <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
+                        <input type="hidden" name="pseudo" value="<?= $value['pseudo'] ?>">
+                        <button type="submit" class="btn"> <i class="fa-regular fa-comment" style="color: #000000;"> <?= $nbcomment['0'] ?> </i> </button>
+                    </form>
+                </div>
+
             </div>
 
-            
-                <!-- AFFICHER LA CAPTION -->
-                <p class="text-danger text-center"> <?= $value['content'] ?> </p>
-           
-                <hr>
+
+            <!-- AFFICHER LA CAPTION -->
+            <p class="text-danger text-center caption"> <?= $value['content'] ?> </p>
+
+            <hr>
 
         <?php  } ?>
         </div>
@@ -87,5 +96,4 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
 <?php
 include './partials/footer.php';
-?>  
-
+?>
