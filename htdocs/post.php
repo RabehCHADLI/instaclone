@@ -50,9 +50,9 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
             <!-- FORMULAIRE LIKE -->
 
-            <form action="./post.php" method="post" id="formlike">
+            <form action="./process/addLike.php" method="post" id="formlike">
 
-                <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
+                <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
                 <button type="submit" class="btn" onclick="changeColor(this)"> <i class="fa-regular fa-heart" style="color: #000000;"></i></button><span id="spanlikes"></span>
             </form>
             <i class="fa-regular fa-comment" style="color: #000000;"> <?= $nbcomment['0'] ?></i>
@@ -60,14 +60,12 @@ $comment = $prepareRequest->fetchAll(PDO::FETCH_ASSOC);
 
         <div class="col col_post">
 
-            <!-- AFFICHER LES COMMENTAIRES -->
             <div id="scroll" class="border rounded-3 border-dark border-2 p-1 row">
                 <div id="listComment">
                 </div>
             </div>
             <div class="" id="message_send_comment"></div>
 
-            <!-- FORMULAIRE COMMENTAIRE -->
             <form action="./process/add_comment.php" method="post" id="form_comment">
                 <input type="hidden" name="post_id" id="post_id" value="<?= $post['id'] ?>">
                 <input class="w-100 rounded-3" type="text" name="content" id="content_com" placeholder="Votre commentaire">

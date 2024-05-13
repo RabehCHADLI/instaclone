@@ -19,30 +19,35 @@ $preparedRequestPost->execute([
     $_SESSION['id']
 ]);
 $post = $preparedRequestPost->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 <div class="profil container border border-secondary rounded-3 p-5">
-    <div class="container row ">
-        <div class=" m-3" style="width: 30rem;">
-            <img src="./imageUpload/<?= $profil['photo_profil'] ?>" class="border rounded-circle m-3" style="clip-path:ellipse(50% 30%); height:200px;">
-            <span class="fw-bold  fs-3 text-uppercase"> <?= $_SESSION['pseudo']; ?> </span>
-        </div>
-        <div class=" m-3 p-5" style="width: 30rem;">
-            <div class="card-body">
-                <h5 class="card-title">Choose a profile picture</h5>
-                <form action="./process/add_profile_photo.php" method="post" enctype="multipart/form-data">
-                    <div class="mb-3 mt-3 mx-auto d-block">
-                        <label for="file" class="form-label"></label>
-                        <input type="file" name='image' id="image">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-12">
+                <img src="./imageUpload/<?= $profil['photo_profil'] ?>" alt="" class="rondeprofil custom-image">
+            </div>
+            <div class="col">
+
+                <span class="fw-bold fs-3 text-uppercase"> <?= $_SESSION['pseudo']; ?> </span>
+                <div class=" m-3 p-5" style="width: 30rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Choose a profile picture</h5>
+                        <form action="./process/add_profile_photo.php" method="post" enctype="multipart/form-data">
+                            <div class="mb-3 mt-3 mx-auto d-block">
+                                <label for="file" class="form-label"></label>
+                                <input type="file" name='image' id="image">
+                            </div>
+                            <button class="btn btn-outline-dark mx-auto d-block mt-5 mb-3">Choose</button>
+                        </form>
                     </div>
-                    <button class="btn btn-outline-dark mx-auto d-block mt-5 mb-3">Choose</button>
-                </form>
+                </div>
             </div>
         </div>
+
     </div>
 
-    <div class="container image-grid border border-secondary rounded-3">
+    <div class="gallery">
         <?php
         foreach ($post as $value) {
 
@@ -51,7 +56,7 @@ $post = $preparedRequestPost->fetchAll(PDO::FETCH_ASSOC);
                 $value['id']
             ]);
             $nbcomment = $prepareRequest->fetch();
-            
+
             $prepareRequest = $connexion->prepare('SELECT COUNT(*) FROM likes WHERE likes.post_id = ?');
             $prepareRequest->execute([
                 $value['id']
@@ -59,19 +64,16 @@ $post = $preparedRequestPost->fetchAll(PDO::FETCH_ASSOC);
             $like = $prepareRequest->fetch();
 
         ?>
-            <div class="container ">
-
-            <!-- FORMULAIRE POUR ALLER VOIR LE POST EN CLIQUANT SUR LA PHOTO -->
-            <form action="./post.php" method="post">
+            <div class="gallery-item ">
+                <form action="./post.php" method="post">
                     <input type="hidden" name="post_id" value="<?= $value['id'] ?>">
                     <input type="hidden" name="pseudo" value="<?= $_SESSION['pseudo'] ?>">
-                    <button class="btn" type="submit">
-                        <img src="./imageUpload/<?= $value['photoPost'] ?>" class="custom-image" alt="">
+                    <button type="submit" class="gallery-button">
+                        <img src="./imageUpload/<?= $value['photoPost'] ?>" class="gallery-image" alt="">
                     </button>
-            </form>        
-        
+                </form>
             </div>
-            <?php } ?>
+        <?php } ?>
     </div>
 
     <?php

@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
+
+.abel-regular {
+    font-family: "Abel", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+
+/* BODY */
+body {
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    font-family: "Abel", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    /* pour éviter le défilement avec la page */
+    top: 0;
+    left: 0px;
+    /* faire en sorte que l'image soit centrée */
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/bg4.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    /* Placez le pseudo-élément derrière le contenu du body */
+}
+
+/* CONNEXION */
+.index {
+    position: absolute;
+    left: 37%;
+    top: 32%;
+    box-shadow: 10px 5px 5px;
+    width: 25%;
+}
+
+/* DECONNEXION */
+.out {
+    position: absolute;
+    left: 37%;
+    top: 32%;
+    box-shadow: 10px 5px 5px;
+    width: 25%;
+}
+
+/* AFFICHER LES COMMENTAIRES */
+#scroll {
+    max-height: 600px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 8px;
+    margin-top: 30px;
+    display: flex;
+    align-content: center;
+}
+
+/* PAGE POST.PHP */
+
+
+.col_post img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    /* Ajuste la taille de l'image pour remplir le conteneur tout en conservant son ratio d'aspect */
+}
+
+.col_post img:hover {
+    width: 100%;
+    /* Réduit la largeur à 100% */
+    height: 100%;
+    /* Réduit la hauteur à 100% */
+    transform: scale(1.1);
+    /* Légèrement agrandit l'image lors du survol */
+}
+
+
+/* PAGE PROFIL.PHP */
+.profil {
+    background-color: #C3C3C3;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+
+}
+
+.image-grid img {
+    width: 100%;
+    /* La largeur sera de 100% de la largeur de la cellule */
+    height: 90%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* PAGE FEED.PHP */
+.feed {
+    background-color: #C3C3C3;
+}
+
+.feed_card {
+    display: flex;
+    justify-content: center;
+}
+
+.image_post_feed img {
+    width: 100%;
+    /* La largeur sera de 100% de la largeur de la cellule */
+    height: 90%;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #B5B2B3;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+/* CAPTION */
+.caption {
+    font-size: 40px;
+}
+
+.rond {
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+}
+
+.custom-image {
+    height: 200px;
+    width: auto;
+    max-width: 100%;
+    display: block;
+    margin: auto;
+}
+
+/* Tablette */
+@media screen and (max-device-width: 1250px) {}
+
+/* Telephone */
+@media screen and (max-device-width: 760px) {
+    body::before {
+        background-image: url('../images/bg4.jpg');
+        transform-origin: center;
+        transform: scale(0.5);
+        width: 200%;
+        height: 200%;
+        left: -50%;
+        top: -50%;
+    }
+
+    .index {
+        position: absolute;
+        left: 23%;
+        top: 32%;
+        box-shadow: 10px 5px 5px;
+        width: 60%;
+    }
+
+    .out {
+        position: absolute;
+        left: 23%;
+        top: 32%;
+        box-shadow: 10px 5px 5px;
+        width: 60%;
+    }
+
+    .profile_picture_navbar {
+        display: none;
+    }
+
+    .entete {
+        display: none;
+    }
+
+
+    button.btn_comm {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .navbar {
+        margin-top: 0;
+    }
+
+    #scroll {
+        max-height: 100px;
+        overflow-y: scroll;
+        border: 1px solid #ccc;
+        margin-bottom: 8px;
+        display: flex;
+        align-content: center;
+    }
+
+}
+
+.divClasse {
+    height: 300px;
+    width: 300px;
+}
+
+.ronde {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.divClasse2 {
+    height: 75px;
+    width: 75px;
+    margin-left: 555px;
+}
+
+.rondeprofil {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.gallery-item {
+    position: relative;
+}
+
+.gallery-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+
+}
+
+.gallery-button {
+    border: none;
+    padding: 0;
+    background: none;
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.1);
+
+}

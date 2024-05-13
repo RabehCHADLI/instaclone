@@ -25,6 +25,6 @@ if ($user) {?>
 }else{
     
     ?>  
-    <h2 class="text-center m-5">Votre recherche n'a pas abouti</h2>
+    <h2 class="text-center m-5">Personne ay nom de <?=$_POST['recherche']?></h2>
 
 <?php } ?>
